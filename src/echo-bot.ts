@@ -1,28 +1,28 @@
-import * as interfaces from "palantiri-interfaces";
+import {Connection, Api} from "palantiri-interfaces";
 import * as Bluebird from "bluebird";
 
 // Echoes to messages during 60 seconds
-export function echoBot (connection: interfaces.Connection, driver: any) {
+export function echoBot (connection: Connection) {
   console.log("Connecting...");
-  connection.connect()
+  Bluebird.resolve(connection.connect())
     .catch((error) => {
       console.error("ConnectionError:");
       console.error(error);
     })
-    .then((api: interfaces.ConnectedApi) => {
+    .then((api: Api) => {
       console.log("Connected, starting to echo message for 60 seconds");
 
-      api.on("message", (message: interfaces.Message) => {
-        console.log("Received message: " + message.body);
-        let responseMsg: interfaces.Message = new driver.Message(message.body);
-        Bluebird.resolve(api.sendMessage(responseMsg, (<any> message).discussion))
+      api.on("message", <Api.events.EventHandler> ((event: Api.events.MessageEvent) => {
+        console.log("Received message: " + event.message.body);
+        let responseMsg: Api.NewMessage = {body: event.message.body};
+        Bluebird.resolve(api.sendMessage(responseMsg, event.message.body))
           .then(() => {
             console.log("Responded to message");
           })
           .catch((error: Error) => {
             console.log("An error happened while trying to respond");
           });
-      });
+      }));
 
       setTimeout(() => {
         console.log("Disconnecting");

@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "bluebird": "registry:npm/bluebird#3.3.4+20160411163813",
+    "lodash": "registry:npm/lodash#4.0.0+20160416211519",
+    "palantiri-interfaces": "npm:palantiri-interfaces"
+  },
+  "devDependencies": {
+    "chai": "registry:npm/chai#3.5.0+20160415060238"
+  },
+  "ambientDependencies": {},
+  "ambientDevDependencies": {
+    "mocha": "registry:dt/mocha#2.2.5+20160317120654",
+    "node": "registry:dt/node#4.0.0+20160412142033"
+  }
+}

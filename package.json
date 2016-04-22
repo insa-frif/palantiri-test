@@ -1,0 +1,36 @@
+{
+  "name": "palantiri-test",
+  "version": "0.0.0",
+  "description": "Test tools for Palantiri",
+  "main": "dist/node/main.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/insa-frif/palantiri-test.git"
+  },
+  "scripts": {
+    "test": "gulp test"
+  },
+  "keywords": [
+    "chat"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "gulp": "^3.9.0",
+    "typescript": "^1.8.10",
+    "via-build-tools": "^0.8.2"
+  },
+  "jspm": {
+    "configFile": "systemjs.config.js",
+    "dependencies": {
+      "lodash": "npm:lodash@^4.0.0"
+    },
+    "devDependencies": {}
+  },
+  "dependencies": {
+    "bluebird": "^3.2.1",
+    "lodash": "^4.0.0",
+    "palantiri-interfaces": "^0.2.0"
+  }
+}

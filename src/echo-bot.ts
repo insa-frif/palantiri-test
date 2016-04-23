@@ -15,7 +15,9 @@ export function echoBot (connection: Connection) {
       api.on("message", <Api.events.EventHandler> ((event: Api.events.MessageEvent) => {
         console.log("Received message: " + event.message.body);
         let responseMsg: Api.NewMessage = {body: event.message.body};
-        Bluebird.resolve(api.sendMessage(responseMsg, event.message.body))
+        Bluebird
+          .delay(1000)
+          .then(() => api.sendMessage(responseMsg, event.discussionId))
           .then(() => {
             console.log("Responded to message");
           })
@@ -26,7 +28,9 @@ export function echoBot (connection: Connection) {
 
       setTimeout(() => {
         console.log("Disconnecting");
-        connection.disconnect();
+        connection
+          .disconnect()
+          .then(() => process.exit(0));
       }, 60*1000);
     });
 }

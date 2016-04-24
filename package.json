@@ -1,6 +1,6 @@
 {
   "name": "palantiri-test",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Test tools for Palantiri",
   "main": "dist/node/main.js",
   "repository": {

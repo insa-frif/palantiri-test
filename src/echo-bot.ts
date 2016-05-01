@@ -17,7 +17,7 @@ export function echoBot (connection: Connection) {
         let responseMsg: Api.NewMessage = {body: event.message.body};
         Bluebird
           .delay(1000)
-          .then(() => api.sendMessage(responseMsg, event.discussionId))
+          .then(() => api.sendMessage(responseMsg, event.discussionGlobalId))
           .then(() => {
             console.log("Responded to message");
           })
